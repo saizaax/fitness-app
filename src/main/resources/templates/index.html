@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page">
+  <section class="page__content">
+    <div class="profile-container">
+      <div class="profile-container_shadow"></div>
+      <div class="profile-container-section">
+        <div class="avatar user__avatar"></div>
+        <div class="user__name-container">
+          <p class="profile-section user__profile-section">Пользователь</p>
+          <p class="profile-username">Владимир Путин <button class="edit-btn"><i class="ri-edit-2-fill"></i></button></p>
+        </div>
+      </div>
+      <div class="profile-container-section profile-container-section_data profile-container-section_personal-data">
+        <p class="profile-section">Персональные данные</p>
+        <div class="profile-data">
+          <p class="profile-data-item">Возраст</p>
+          <p class="profile-data-value">21</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Высота</p>
+          <p class="profile-data-value">182 см</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Вес</p>
+          <p class="profile-data-value">83 кг</p>
+        </div>
+      </div>
+      <hr class="profile-separator" />
+      <div class="profile-container-section profile-container-section_data ">
+        <p class="profile-section">Данные о занятиях</p>
+        <div class="profile-data">
+          <p class="profile-data-item">Посещений</p>
+          <p class="profile-data-value">41</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Часов</p>
+          <p class="profile-data-value">39</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Сред. время</p>
+          <p class="profile-data-value">51 мин</p>
+        </div>
+      </div>
+      <hr class="profile-separator" />
+      <div class="profile-container-section profile-container-section_data ">
+        <p class="profile-section">Данные о тарифе</p>
+        <div class="profile-data">
+          <p class="profile-data-item">План</p>
+          <p class="profile-data-value">PRO</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Стоимость</p>
+          <p class="profile-data-value">3390 руб</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Время</p>
+          <p class="profile-data-value">30 дней</p>
+        </div>
+      </div>
+      <hr class="profile-separator" />
+      <div class="profile-container-section profile-container-section_data ">
+        <p class="profile-section">Подписка</p>
+        <div class="profile-data">
+          <p class="profile-data-item">Начало</p>
+          <p class="profile-data-value">12.04.21</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Окончание</p>
+          <p class="profile-data-value">11.05.21</p>
+        </div>
+        <div class="profile-data">
+          <p class="profile-data-item">Осталось</p>
+          <p class="profile-data-value">29 дней</p>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-container">
+      <div class="catalog-bar">
+        <h1 class="catalog-bar__title">Спортивные программы</h1>
+        <p class="catalog-bar__exit">Выйти <i class="ri-arrow-right-line catalog-bar__exit-icon"></i></p>
+      </div>
+      <div class="catalog-programs">
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn">Записаться</button>
+          </div>
+        </div>
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn program-action-btn_active">Отписаться</button>
+          </div>
+        </div>
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn">Записаться</button>
+          </div>
+        </div>
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn">Записаться</button>
+          </div>
+        </div>
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn">Записаться</button>
+          </div>
+        </div>
+        <div class="program-container">
+          <div class="program-container_shadow"></div>
+          <div class="program-info">
+            <h2 class="program-title">Boxing</h2>
+            <p class="program-description">Класс, направленный на изучение базовой техники ударов и защиты, тактики ведения боя.</p>
+            <div class="program-stats">
+              <p class="program-stats-item">120 часов</p>
+              <hr class="program-stats-separator" />
+              <p class="program-stats-item">60 тренировок</p>
+            </div>
+            <div class="program-complexity">
+              <p class="program-complexity-title">Сложность</p>
+              <div class="program-complexity-scale">
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item program-complexity-scale__item_active" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+                <hr class="program-complexity-scale__item" />
+              </div>
+            </div>
+          </div>
+          <div class="program-media">
+            <div class="program-image"></div>
+            <button class="program-action-btn">Записаться</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
