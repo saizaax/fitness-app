@@ -13,4 +13,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/auth")
+    public String auth(Model model) {
+        model.addAttribute("title", "Fitness - Authorization");
+        return "authorization";
+    }
+
+    @GetMapping("/edit")
+    public String edit(Model model) {
+        model.addAttribute("title", "Fitness - Edit");
+        return "edit";
+    }
+
 }
