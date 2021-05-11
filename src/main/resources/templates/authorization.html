@@ -5,27 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:text="${title}"></title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="page">
     <section class="page__content page__content_auth">
       <div class="auth-form">
         <div class="auth-form-section auth-form-section_left">
           <h1 class="auth-form-section-title">Авторизация</h1>
-          <div class="auth-form-section-container auth-form-section-login">
+          <form th:action="@{/auth}" method="post" class="auth-form-section-container auth-form-section-login">
             <p class="auth-form-section-subtitle">Вход</p>
             <input
               class="auth-form-section-input"
               type="text"
               placeholder="Логин"
+              name="username"
             />
             <input
               class="auth-form-section-input"
               type="password"
               placeholder="Пароль"
+              name="password"
             />
-            <button class="auth-form-section-button">Войти</button>
-          </div>
+            <button class="auth-form-section-button" type="submit">Войти</button>
+          </form>
         </div>
         <div class="auth-form-section auth-form-section_right">
           <div class="auth-form-section-container auth-form-section-register">

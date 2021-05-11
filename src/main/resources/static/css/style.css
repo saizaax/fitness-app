@@ -30,7 +30,7 @@ button, input {
 }
 
 .page__content_auth {
-  background: center/cover url("./assets/pattern.png");
+  background: center/cover url("../assets/pattern.png");
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
