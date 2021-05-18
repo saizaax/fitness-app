@@ -30,30 +30,35 @@
           </form>
         </div>
         <div class="auth-form-section auth-form-section_right">
-          <form th:action="@{/register}" method="POST" class="auth-form-section-container auth-form-section-register">
+          <form th:action="@{/register}" th:object="${user}" method="POST" class="auth-form-section-container auth-form-section-register">
             <p class="auth-form-section-subtitle">Регистрация</p>
             <input
               class="auth-form-section-input"
               type="text"
               placeholder="Логин"
               name="username"
+              th:field="*{username}"
             />
             <input
               class="auth-form-section-input"
               type="password"
               placeholder="Пароль"
               name="password"
+              th:field="*{password}"
+              id="register-password-input"
             />
             <input
               class="auth-form-section-input"
               type="password"
               placeholder="Повторите пароль"
               name="repeatPassword"
+              id="register-password-repeat-input"
             />
-            <button class="auth-form-section-button" type="submit">Зарегистрироваться</button>
+            <button class="auth-form-section-button" type="submit" id="register-button">Зарегистрироваться</button>
           </form>
         </div>
       </div>
     </section>
+    <script src="js/index.js"></script>
   </body>
 </html>
