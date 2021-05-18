@@ -11,6 +11,8 @@ import ru.mirea.fitness.models.User;
 import ru.mirea.fitness.repo.TrainingProgramRepository;
 import ru.mirea.fitness.repo.UserRepository;
 
+import java.security.Principal;
+
 @Controller
 public class MainController {
 
@@ -21,10 +23,11 @@ public class MainController {
     private UserRepository userRepository;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
         Iterable<TrainingProgram> trainingPrograms = trainingProgramRepository.findAll();
         model.addAttribute("title", "Fitness - Dashboard");
         model.addAttribute("trainingPrograms", trainingPrograms);
+        model.addAttribute("user", userRepository.getUserByUsername(principal.getName()));
         return "index";
     }
 
@@ -40,8 +43,6 @@ public class MainController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        user.setRole("ROLE_USER");
-        user.setEnabled(true);
 
         userRepository.save(user);
 
@@ -49,9 +50,26 @@ public class MainController {
     }
 
     @GetMapping("/edit")
-    public String edit(Model model) {
+    public String edit(Model model, Principal principal) {
         model.addAttribute("title", "Fitness - Edit");
+        model.addAttribute("user", userRepository.getUserByUsername(principal.getName()));
         return "edit";
     }
 
+    @PostMapping("/edit_profile")
+    public String editData(User user, Principal principal) {
+        User prev = userRepository.getUserByUsername(principal.getName());
+
+        prev.setAvatarUrl(user.getAvatarUrl());
+        prev.setFirstName(user.getFirstName());
+        prev.setSecondName(user.getSecondName());
+        prev.setAge(user.getAge());
+        prev.setHeight(user.getHeight());
+        prev.setWeight(user.getWeight());
+        prev.setVisits(user.getVisits());
+        prev.setHours(user.getHours());
+
+        userRepository.save(prev);
+        return "redirect:/";
+    }
 }

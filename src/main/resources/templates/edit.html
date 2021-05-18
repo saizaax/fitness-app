@@ -9,63 +9,77 @@
   </head>
   <body class="page">
     <section class="page__content page__content_auth">
-      <div class="edit-form">
+      <form th:action="@{/edit_profile}" th:object="${user}" method="post" class="edit-form">
         <h1 class="auth-form-section-title edit-form-title">Редактирование</h1>
+        <p class="edit-form-subtitle">Аватар</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Аватар"
+          th:value="${user.avatarUrl}"
+          th:field="*{avatarUrl}"
+        />
         <p class="edit-form-subtitle">Имя</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
-          placeholder="Логин"
-          value="Владимир"
+          placeholder="Имя"
+          th:value="${user.firstName}"
+          th:field="*{firstName}"
         />
         <p class="edit-form-subtitle">Фамилия</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
-          placeholder="Логин"
-          value="Путин"
+          placeholder="Фамилия"
+          th:value="${user.secondName}"
+          th:field="*{secondName}"
         />
         <p class="edit-form-subtitle">Возраст</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
           placeholder="Возраст"
+          th:value="${user.age}"
+          th:field="*{age}"
         />
         <p class="edit-form-subtitle">Высота</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
           placeholder="Высота"
+          th:value="${user.height}"
+          th:field="*{height}"
         />
         <p class="edit-form-subtitle">Вес</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
           placeholder="Вес"
+          th:value="${user.weight}"
+          th:field="*{weight}"
         />
         <p class="edit-form-subtitle">Посещения</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
           placeholder="Посещения"
+          th:value="${user.visits}"
+          th:field="*{visits}"
         />
         <p class="edit-form-subtitle">Часы</p>
         <input
           class="auth-form-section-input edit-form-input"
           type="text"
           placeholder="Часы"
-        />
-        <p class="edit-form-subtitle">Сред. время</p>
-        <input
-          class="auth-form-section-input edit-form-input"
-          type="text"
-          placeholder="Сред. время"
+          th:value="${user.hours}"
+          th:field="*{hours}"
         />
         <div class="edit-form-btn-container">
-            <button class="auth-form-section-button">Сохранить</button>
-            <button class="auth-form-section-button edit-form-btn-exit">Назад</button>
+          <button class="auth-form-section-button" type="submit">Сохранить</button>
+          <a class="auth-form-section-button edit-form-btn-exit" th:href="@{/}">Назад</a>
         </div>
-      </div>
+      </form>
     </section>
   </body>
 </html>

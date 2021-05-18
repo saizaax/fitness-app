@@ -12,25 +12,29 @@
     <div class="profile-container">
       <div class="profile-container_shadow"></div>
       <div class="profile-container-section">
-        <div class="avatar user__avatar"></div>
+        <div
+          class="avatar user__avatar"
+          th:style="'background: center / cover url(' + ${user.avatarUrl} + ');'"
+        ></div>
         <div class="user__name-container">
           <p class="profile-section user__profile-section">Пользователь</p>
-          <p class="profile-username">Владимир Путин <a class="edit-btn" th:href="@{/edit}"><i class="ri-edit-2-fill"></i></a></p>
+          <p class="profile-username" th:text="${user.firstName + ' ' + user.secondName}"></p>
+          <a class="edit-btn" th:href="@{/edit}">Изменить</a>
         </div>
       </div>
       <div class="profile-container-section profile-container-section_data profile-container-section_personal-data">
         <p class="profile-section">Персональные данные</p>
         <div class="profile-data">
           <p class="profile-data-item">Возраст</p>
-          <p class="profile-data-value">21</p>
+          <p class="profile-data-value" th:text="${user.age}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Высота</p>
-          <p class="profile-data-value">182 см</p>
+          <p class="profile-data-value" th:text="${user.height} + ' см'"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Вес</p>
-          <p class="profile-data-value">83 кг</p>
+          <p class="profile-data-value" th:text="${user.weight} + ' кг'"></p>
         </div>
       </div>
       <hr class="profile-separator" />
@@ -38,15 +42,15 @@
         <p class="profile-section">Данные о занятиях</p>
         <div class="profile-data">
           <p class="profile-data-item">Посещений</p>
-          <p class="profile-data-value">41</p>
+          <p class="profile-data-value" id="profile-visits" th:text="${user.visits}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Часов</p>
-          <p class="profile-data-value">39</p>
+          <p class="profile-data-value" id="profile-hours" th:text="${user.hours}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Сред. время</p>
-          <p class="profile-data-value">51 мин</p>
+          <p class="profile-data-value" id="profile-avg-time">... мин</p>
         </div>
       </div>
       <hr class="profile-separator" />
@@ -54,15 +58,15 @@
         <p class="profile-section">Данные о тарифе</p>
         <div class="profile-data">
           <p class="profile-data-item">План</p>
-          <p class="profile-data-value">PRO</p>
+          <p class="profile-data-value" th:text="${user.plan}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Стоимость</p>
-          <p class="profile-data-value">3390 руб</p>
+          <p class="profile-data-value" th:text="${user.price} + ' руб'"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Время</p>
-          <p class="profile-data-value">30 дней</p>
+          <p class="profile-data-value" th:text="${user.days} + ' дней'"></p>
         </div>
       </div>
       <hr class="profile-separator" />
@@ -70,15 +74,15 @@
         <p class="profile-section">Подписка</p>
         <div class="profile-data">
           <p class="profile-data-item">Начало</p>
-          <p class="profile-data-value">12.04.21</p>
+          <p class="profile-data-value" id="profile-subscription-start" th:text="${user.subscriptionStart}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Окончание</p>
-          <p class="profile-data-value">11.05.21</p>
+          <p class="profile-data-value" id="profile-subscription-end" th:text="${user.subscriptionEnd}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Осталось</p>
-          <p class="profile-data-value">29 дней</p>
+          <p class="profile-data-value" id="profile-subscription-days">... дней</p>
         </div>
       </div>
     </div>
@@ -122,5 +126,6 @@
       </div>
     </div>
   </section>
+  <script src="js/index.js"></script>
 </body>
 </html>
