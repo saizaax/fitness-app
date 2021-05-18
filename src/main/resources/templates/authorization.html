@@ -12,7 +12,7 @@
       <div class="auth-form">
         <div class="auth-form-section auth-form-section_left">
           <h1 class="auth-form-section-title">Авторизация</h1>
-          <form th:action="@{/auth}" method="post" class="auth-form-section-container auth-form-section-login">
+          <form th:action="@{/auth}" method="POST" class="auth-form-section-container auth-form-section-login">
             <p class="auth-form-section-subtitle">Вход</p>
             <input
               class="auth-form-section-input"
@@ -30,25 +30,28 @@
           </form>
         </div>
         <div class="auth-form-section auth-form-section_right">
-          <div class="auth-form-section-container auth-form-section-register">
+          <form th:action="@{/register}" method="POST" class="auth-form-section-container auth-form-section-register">
             <p class="auth-form-section-subtitle">Регистрация</p>
             <input
               class="auth-form-section-input"
               type="text"
               placeholder="Логин"
+              name="username"
             />
             <input
               class="auth-form-section-input"
               type="password"
               placeholder="Пароль"
+              name="password"
             />
             <input
               class="auth-form-section-input"
               type="password"
               placeholder="Повторите пароль"
+              name="repeatPassword"
             />
-            <button class="auth-form-section-button">Зарегистрироваться</button>
-          </div>
+            <button class="auth-form-section-button" type="submit">Зарегистрироваться</button>
+          </form>
         </div>
       </div>
     </section>

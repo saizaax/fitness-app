@@ -15,7 +15,7 @@
         <div class="avatar user__avatar"></div>
         <div class="user__name-container">
           <p class="profile-section user__profile-section">Пользователь</p>
-          <p class="profile-username">Владимир Путин <button class="edit-btn"><i class="ri-edit-2-fill"></i></button></p>
+          <p class="profile-username">Владимир Путин <a class="edit-btn" th:href="@{/edit}"><i class="ri-edit-2-fill"></i></a></p>
         </div>
       </div>
       <div class="profile-container-section profile-container-section_data profile-container-section_personal-data">
@@ -85,7 +85,7 @@
     <div class="catalog-container">
       <div class="catalog-bar">
         <h1 class="catalog-bar__title">Спортивные программы</h1>
-        <p class="catalog-bar__exit">Выйти <i class="ri-arrow-right-line catalog-bar__exit-icon"></i></p>
+        <form th:action="@{/logout}" method="post" class="catalog-bar__exit-form"><button class="catalog-bar__exit" type="submit">Выйти <i class="ri-arrow-right-line catalog-bar__exit-icon"></i></button></form>
       </div>
       <div class="catalog-programs">
         <div th:each="el : ${trainingPrograms}" class="program-container">

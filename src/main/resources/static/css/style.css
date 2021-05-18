@@ -225,9 +225,14 @@ button, input {
 
 .catalog-bar__exit {
   min-width: 100px;
-  margin: 0 20px 0 auto;
   font-size: 20px;
   color: #B7FF7E;
+  background: transparent;
+  border: none;
+}
+
+.catalog-bar__exit-form {
+  margin: 0 20px 0 auto;
 }
 
 .catalog-bar__exit-icon {
