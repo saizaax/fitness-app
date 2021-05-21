@@ -104,10 +104,10 @@
             </div>
             <div class="program-complexity">
               <p class="program-complexity-title">Сложность</p>
-              <div class="program-complexity-scale">
-                <hr class="program-complexity-scale__item program-complexity-scale__item_active"/>
-                <hr class="program-complexity-scale__item program-complexity-scale__item_active"/>
-                <hr class="program-complexity-scale__item program-complexity-scale__item_active"/>
+              <div class="program-complexity-scale" th:attr="data-scale=${el.complexity}">
+                <hr class="program-complexity-scale__item"/>
+                <hr class="program-complexity-scale__item"/>
+                <hr class="program-complexity-scale__item"/>
                 <hr class="program-complexity-scale__item"/>
                 <hr class="program-complexity-scale__item"/>
                 <hr class="program-complexity-scale__item"/>

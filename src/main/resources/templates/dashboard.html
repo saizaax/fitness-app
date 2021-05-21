@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page">
+<section class="page__content">
+    <div class="profile-container">
+        <div class="profile-container_shadow"></div>
+        <div class="profile-container-section">
+            <div class="user__name-container user__name-container_admin">
+                <p class="profile-section user__profile-section">Администратор</p>
+                <p class="profile-username" th:text="${user.firstName + ' ' + user.secondName}"></p>
+            </div>
+        </div>
+        <div
+                class="
+            profile-container-section
+            profile-container-section_data
+            profile-container-section_personal-data
+            profile-container-section_admin
+          "
+        >
+            <p class="admin-profile_title">Пользователи</p>
+            <div th:each="el : ${trainingUsers}" class="admin-profile_user">
+                <div class="admin-profile_user-avatar" th:attr="style=${'background: center / cover url(' + el.avatarUrl + ');'}"></div>
+                <div class="admin-profile_user-info">
+                  <p class="admin-profile_user-info_name" th:text="${el.firstName + ' ' + el.secondName}"></p>
+                  <p class="admin-profile_user-info_login" th:text="${el.username}"></p>
+                </div>
+                <button
+                  th:attr="user_id=${el.id},
+                    username=${el.username},
+                    password=${el.password},
+                    avatar_url=${el.avatarUrl},
+                    first_name=${el.firstName},
+                    second_name=${el.secondName},
+                    age=${el.age},
+                    height=${el.height},
+                    weight=${el.weight},
+                    visits=${el.visits},
+                    hours=${el.hours},
+                    plan=${el.plan},
+                    price=${el.price},
+                    days=${el.days},
+                    subscription_start=${el.subscriptionStart},
+                    subscription_end=${el.subscriptionEnd},
+                    role=${el.role}"
+                  class="admin-profile_user-edit"
+                  onclick="setUserInputs(event)"
+                ><i class="ri-pencil-fill"></i
+                ></button>
+            </div>
+        </div>
+    </div>
+    <div class="catalog-container">
+        <div class="catalog-bar">
+            <h1 class="catalog-bar__title">Редактор</h1>
+            <form th:action="@{/logout}" method="post" class="catalog-bar__exit-form"><button class="catalog-bar__exit" type="submit">Выйти <i class="ri-arrow-right-line catalog-bar__exit-icon"></i></button></form>
+        </div>
+        <div class="catalog_admin">
+            <div class="catalog-programs catalog-programs_admin">
+                <form class="edit-form_admin" th:action="@{/edit_user}" th:object="${user}" method="post">
+                    <div class="edit-form-shadow edit-form-shadow_admin"></div>
+                    <div class="edit-form-items">
+                        <p class="edit-form-subtitle">ID</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="ID"
+                                disabled
+                                id="user_id_input"
+                                th:field="*{id}"
+                        />
+                        <p class="edit-form-subtitle">Логин</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Логин"
+                                id="username_input"
+                                th:field="*{username}"
+                        />
+                        <p class="edit-form-subtitle">Пароль</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="password"
+                                placeholder="Пароль"
+                                id="password_input"
+                                th:field="*{password}"
+                        />
+                        <p class="edit-form-subtitle">Аватар</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Аватар"
+                                id="avatar_url_input"
+                                th:field="*{avatarUrl}"
+                        />
+                        <p class="edit-form-subtitle">Имя</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Имя"
+                                id="first_name_input"
+                                th:field="*{firstName}"
+                        />
+                        <p class="edit-form-subtitle">Фамилия</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Фамилия"
+                                id="second_name_input"
+                                th:field="*{secondName}"
+                        />
+                        <p class="edit-form-subtitle">Возраст</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Возраст"
+                                id="age_input"
+                                th:field="*{age}"
+                        />
+                        <p class="edit-form-subtitle">Высота</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Высота"
+                                id="height_input"
+                                th:field="*{height}"
+                        />
+                        <p class="edit-form-subtitle">Вес</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Вес"
+                                id="weight_input"
+                                th:field="*{weight}"
+                        />
+                        <p class="edit-form-subtitle">Посещения</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Посещения"
+                                id="visits_input"
+                                th:field="*{visits}"
+                        />
+                        <p class="edit-form-subtitle">Часы</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Часы"
+                                id="hours_input"
+                                th:field="*{hours}"
+                        />
+                        <p class="edit-form-subtitle">План</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="План"
+                                id="plan_input"
+                                th:field="*{plan}"
+                        />
+                        <p class="edit-form-subtitle">Стоимость</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Стоимость"
+                                id="price_input"
+                                th:field="*{price}"
+                        />
+                        <p class="edit-form-subtitle">Кол-во дней</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Начало подписки"
+                                id="days_input"
+                                th:field="*{days}"
+                        />
+                        <p class="edit-form-subtitle">Начало подписки</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Начало подписки"
+                                id="subscription_start_input"
+                                th:field="*{subscriptionStart}"
+                        />
+                        <p class="edit-form-subtitle">Конец подписки</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Конец подписки"
+                                id="subscription_end_input"
+                                th:field="*{subscriptionEnd}"
+                        />
+                        <p class="edit-form-subtitle">Роль</p>
+                        <input
+                                class="auth-form-section-input edit-form-input"
+                                type="text"
+                                placeholder="Роль"
+                                id="role_input"
+                                th:field="*{role}"
+                        />
+                    </div>
+                    <div class="edit-form-btn-container">
+                        <button class="auth-form-section-button" type="submit">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="catalog-programs catalog-programs_admin catalog-programs_admin-programs">
+                <div class="program-container program-container_new">
+                    <div class="program-container_shadow"></div>
+                    <div class="program-info">
+                        <h2 class="program-title">Добавить</h2>
+                        <p class="program-description">
+                            Добавить новую программу тренировки.
+                        </p>
+                        <button class="program-action-btn">Добавить</button>
+                    </div>
+                </div>
+                <div th:each="el : ${trainingPrograms}" class="program-container">
+                    <div class="program-container_shadow"></div>
+                    <div class="program-info">
+                        <h2 class="program-title" th:text="${el.title}"></h2>
+                        <p class="program-description" th:text="${el.description}"></p>
+                        <div class="program-stats">
+                            <p class="program-stats-item" th:text="${el.hours + ' часов'}"></p>
+                            <hr class="program-stats-separator" />
+                            <p class="program-stats-item" th:text="${el.trainings + ' тренировок'}"></p>
+                        </div>
+                        <div class="program-complexity">
+                            <p class="program-complexity-title">Сложность</p>
+                            <div class="program-complexity-scale" th:attr="data-scale=${el.complexity}">
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                                <hr class="program-complexity-scale__item" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-media">
+                        <div class="program-image"></div>
+                        <button class="program-action-btn">
+                            Изменить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

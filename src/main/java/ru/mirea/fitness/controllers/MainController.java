@@ -1,6 +1,8 @@
 package ru.mirea.fitness.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,19 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model, Principal principal) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth.getAuthorities().iterator().next().toString().equals("ROLE_ADMIN")) {
+            Iterable<TrainingProgram> trainingPrograms = trainingProgramRepository.findAll();
+            Iterable<User> trainingUsers = userRepository.findAll();
+            model.addAttribute("title", "Fitness - Admin Dashboard");
+            model.addAttribute("trainingPrograms", trainingPrograms);
+            model.addAttribute("trainingUsers", trainingUsers);
+            model.addAttribute("user", userRepository.getUserByUsername(principal.getName()));
+            return "dashboard";
+        }
+
         Iterable<TrainingProgram> trainingPrograms = trainingProgramRepository.findAll();
         model.addAttribute("title", "Fitness - Dashboard");
         model.addAttribute("trainingPrograms", trainingPrograms);
@@ -38,6 +53,21 @@ public class MainController {
         return "authorization";
     }
 
+    @PostMapping("/edit_user")
+    public String editUser(User user) {
+        User prev = userRepository.getUserByUsername(user.getUsername());
+
+        if (user.getPassword().length() != 60) {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+        }
+
+        user.setId(prev.getId());
+        userRepository.save(user);
+        return "redirect:/";
+    }
+
     @PostMapping("/register")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -46,7 +76,7 @@ public class MainController {
 
         userRepository.save(user);
 
-        return "edit";
+        return "redirect:/edit";
     }
 
     @GetMapping("/edit")

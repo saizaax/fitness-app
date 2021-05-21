@@ -13,7 +13,17 @@ public class TrainingProgram {
     private long Id;
 
     private String title, description;
-    private int hours, trainings;
+    private int hours;
+    private int trainings;
+    private int complexity;
+
+    public int getComplexity() {
+        return complexity;
+    }
+
+    public void setComplexity(int complexity) {
+        this.complexity = complexity;
+    }
 
     public long getId() {
         return Id;

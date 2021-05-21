@@ -1,6 +1,7 @@
 package ru.mirea.fitness.models;
 
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
