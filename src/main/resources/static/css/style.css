@@ -11,6 +11,10 @@ body {
   color: #eeeeee;
 }
 
+a {
+  text-decoration: none;
+}
+
 button,
 input {
   font-family: "Montserrat", sans-serif;
@@ -71,7 +75,7 @@ input {
 .profile-container_shadow {
   z-index: -1;
   width: 85%;
-  height: 820px;
+  height: 780px;
   position: absolute;
   left: 50%;
   top: 25px;
@@ -102,7 +106,7 @@ input {
 }
 
 .profile-container-section_personal-data {
-  margin-top: 55px;
+  margin-top: 40px;
 }
 
 .profile-container-section_admin {
@@ -303,13 +307,15 @@ input {
 
 .catalog-programs_admin-programs {
   overflow: auto;
-  height: 775px;
+  max-height: 775px;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .catalog-programs_admin-programs::-webkit-scrollbar {
@@ -326,6 +332,10 @@ input {
   border-radius: 10px;
 }
 
+.catalog-programs_admin-programs > .program-container {
+  width: 450px;
+}
+
 @media screen and (max-width: 1587px) {
   .catalog-programs_admin {
     max-width: 100%;
@@ -337,6 +347,101 @@ input {
   .catalog-programs {
     margin-bottom: 30px;
   }
+}
+
+.edit-form_payment {
+  max-width: 530px !important;
+  max-height: 620px !important;
+}
+
+.edit-form_payment__card-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 20px 0 45px 0;
+  width: 100%;
+  min-height: 260px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid #B7FF7E;
+  border-radius: 30px;
+  background: linear-gradient(104.64deg, #1C1E2B 0%, #1E2226 100%);
+  -webkit-box-shadow: 5px 5px 15px 0px #B7FF7E0D;
+          box-shadow: 5px 5px 15px 0px #B7FF7E0D;
+  padding: 30px 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.edit-form_payment__card-info {
+  color: #B7FF7E;
+  margin: 0 0 10px 0;
+}
+
+.edit-form_payment__card-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.edit-form_payment__card-input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(183, 255, 126, 0.15);
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: #B7FF7E;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-form_payment__card-input::-webkit-input-placeholder {
+  color: rgba(183, 255, 126, 0.3);
+}
+
+.edit-form_payment__card-input:-ms-input-placeholder {
+  color: rgba(183, 255, 126, 0.3);
+}
+
+.edit-form_payment__card-input::-ms-input-placeholder {
+  color: rgba(183, 255, 126, 0.3);
+}
+
+.edit-form_payment__card-input::placeholder {
+  color: rgba(183, 255, 126, 0.3);
+}
+
+.edit-form_payment__card-input_cvc {
+  width: 65px;
+}
+
+.edit-form_payment__card-input_date {
+  width: 87.5px;
+}
+
+.edit-form_payment__price {
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 0 15px 0;
+}
+
+.edit-form_payment__price-result {
+  color: #B7FF7E;
 }
 
 .edit-form-items {
@@ -633,6 +738,10 @@ input {
 .program-action-btn_active {
   color: #ff7e7e;
   background: rgba(255, 126, 126, 0.1);
+}
+
+.program-action-btn_payment {
+  margin-top: 15px;
 }
 
 .program-action-btn:hover {

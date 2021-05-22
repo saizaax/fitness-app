@@ -218,7 +218,7 @@
                         <p class="program-description">
                             Добавить новую программу тренировки.
                         </p>
-                        <button class="program-action-btn">Добавить</button>
+                        <a th:href="@{'/edit_program/new'}"><button class="program-action-btn">Добавить</button></a>
                     </div>
                 </div>
                 <div th:each="el : ${trainingPrograms}" class="program-container">
@@ -248,10 +248,12 @@
                         </div>
                     </div>
                     <div class="program-media">
-                        <div class="program-image"></div>
-                        <button class="program-action-btn">
-                            Изменить
-                        </button>
+                        <div class="program-image" th:style="'background: center / cover url(' + ${el.thumbnail} + ');'"></div>
+                        <a th:href="@{'/edit_program/' + ${el.id}}">
+                            <button class="program-action-btn">
+                                Изменить
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

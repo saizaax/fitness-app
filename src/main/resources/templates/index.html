@@ -85,6 +85,7 @@
           <p class="profile-data-value" id="profile-subscription-days">... дней</p>
         </div>
       </div>
+      <a th:href="@{/payment}"><button class="program-action-btn program-action-btn_payment">Продлить подписку</button></a>
     </div>
     <div class="catalog-container">
       <div class="catalog-bar">
@@ -92,7 +93,7 @@
         <form th:action="@{/logout}" method="post" class="catalog-bar__exit-form"><button class="catalog-bar__exit" type="submit">Выйти <i class="ri-arrow-right-line catalog-bar__exit-icon"></i></button></form>
       </div>
       <div class="catalog-programs">
-        <div th:each="el : ${trainingPrograms}" class="program-container">
+        <form th:action="@{${el.getUsers().contains(user) == true ? '/subscription_remove/' + el.id : '/subscription_add/' + el.id}}" th:each="el : ${trainingPrograms}" method="post" class="program-container">
           <div class="program-container_shadow"></div>
           <div class="program-info">
             <h2 th:text="${el.title}" class="program-title"></h2>
@@ -119,10 +120,10 @@
             </div>
           </div>
           <div class="program-media">
-            <div class="program-image"></div>
-            <button class="program-action-btn">Записаться</button>
+            <div class="program-image" th:style="'background: center / cover url(' + ${el.thumbnail} + ');'"></div>
+            <button th:class="${el.getUsers().contains(user) == true ? 'program-action-btn program-action-btn_active' : 'program-action-btn'}" th:text="${el.getUsers().contains(user) == true ? 'Отписаться' : 'Записаться'}" type="submit"></button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>

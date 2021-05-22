@@ -45,23 +45,3 @@ const getComplexityScale = () => {
     })
 }
 getComplexityScale()
-
-const changeSubscriptionStatus = (event) => {
-    const { target } = event
-
-    const inactive = "program-action-btn"
-    const active = "program-action-btn program-action-btn_active"
-    const targetClass = target.className
-
-    target.className = targetClass === inactive ? active : inactive
-    target.innerHTML = targetClass === inactive ? "Отписаться" : "Записаться"
-}
-
-const addClickSubscriptionEvents = () => {
-    const elements = Array.from(
-        document.getElementsByClassName("program-action-btn")
-    )
-
-    elements.forEach((el) => (el.onclick = changeSubscriptionStatus))
-}
-addClickSubscriptionEvents()

@@ -12,6 +12,10 @@ body {
   color: #eeeeee;
 }
 
+a {
+  text-decoration: none;
+}
+
 button,
 input {
   font-family: "Montserrat", sans-serif;
@@ -41,7 +45,7 @@ input {
   &_shadow {
     z-index: -1;
     width: 85%;
-    height: 820px;
+    height: 780px;
     position: absolute;
     left: 50%;
     top: 25px;
@@ -76,7 +80,7 @@ input {
     }
 
     &_personal-data {
-      margin-top: 55px;
+      margin-top: 40px;
     }
 
     &_admin {
@@ -261,9 +265,10 @@ input {
 
     &-programs {
       overflow: auto;
-      height: 775px;
+      max-height: 775px;
       box-shadow: none;
       flex-direction: column;
+      flex-wrap: nowrap;
       
       &::-webkit-scrollbar {
         width: 7.5px;
@@ -277,6 +282,10 @@ input {
       &::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+      }
+
+      & > .program-container {
+        width: 450px;
       }
     }
 
@@ -296,6 +305,73 @@ input {
 }
 
 .edit-form {
+
+  &_payment {
+    max-width: 530px !important;
+    max-height: 620px !important;
+
+    &__card-container {
+      box-sizing: border-box;
+      margin: 20px 0 45px 0;
+      width: 100%;
+      min-height: 260px;
+      height: fit-content;
+      border: 1px solid #B7FF7E;
+      border-radius: 30px;
+      background: linear-gradient(104.64deg, #1C1E2B 0%, #1E2226 100%);
+      box-shadow: 5px 5px 15px 0px #B7FF7E0D;
+      padding: 30px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__card-info {
+      color: #B7FF7E;
+      margin: 0 0 10px 0;
+    }
+
+    &__card-input-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    &__card-input {
+      box-sizing: border-box;
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(183, 255, 126, 0.15);
+      border-radius: 10px;
+      padding: 15px 20px;
+      color: #B7FF7E;
+      font-size: 14px;
+      font-weight: 600;
+
+      &::placeholder {
+        color: rgba($color: #b7ff7e, $alpha: 0.3);
+      }
+
+      &_cvc {
+        width: 65px;
+      }
+
+      &_date {
+        width: 87.5px;
+      }
+    }
+
+    &__price {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+
+      &-result {
+        color: #B7FF7E;
+      }
+    }
+  }
 
   &-items {
     overflow: auto;
@@ -551,6 +627,10 @@ input {
     &_active {
       color: #ff7e7e;
       background: rgba($color: #ff7e7e, $alpha: 0.1);
+    }
+
+    &_payment {
+      margin-top: 15px;
     }
 
     &:hover {

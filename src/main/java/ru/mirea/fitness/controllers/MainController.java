@@ -7,13 +7,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mirea.fitness.models.TrainingProgram;
 import ru.mirea.fitness.models.User;
 import ru.mirea.fitness.repo.TrainingProgramRepository;
 import ru.mirea.fitness.repo.UserRepository;
 
 import java.security.Principal;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class MainController {
@@ -65,6 +70,56 @@ public class MainController {
 
         user.setId(prev.getId());
         userRepository.save(user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit_program/{id}")
+    public String editProgram(@PathVariable String id, Model model) {
+        if (id.equals("new")) {
+            model.addAttribute("title", "Fitness - New Training Program");
+            model.addAttribute("trainingProgram", new TrainingProgram());
+            model.addAttribute("endpoint", "/new_program");
+        }
+        else {
+            TrainingProgram trainingProgram = trainingProgramRepository.getTrainingProgramById(Long.parseLong(id));
+            model.addAttribute("title", "Fitness - Edit Training Program");
+            model.addAttribute("trainingProgram", trainingProgram);
+            model.addAttribute("endpoint", "/edit_program");
+        }
+        return "edit_program";
+    }
+
+    @PostMapping("/new_program")
+    public String processNewProgram(TrainingProgram trainingProgram) {
+        trainingProgramRepository.save(trainingProgram);
+        return "redirect:/";
+    }
+
+    @PostMapping("/edit_program/{id}")
+    public String processProgram(@PathVariable String id, TrainingProgram trainingProgram, Principal principal) {
+        TrainingProgram prev = trainingProgramRepository.getTrainingProgramById(Long.parseLong(id));
+        trainingProgram.setId(prev.getId());
+        trainingProgramRepository.save(trainingProgram);
+        return "redirect:/";
+    }
+
+    @PostMapping("/subscription_add/{id}")
+    public String subscriptionAdd(@PathVariable String id, Principal principal) {
+        User currentUser = userRepository.getUserByUsername(principal.getName());
+        Set<TrainingProgram> trainingPrograms = currentUser.getTrainingPrograms();
+        TrainingProgram trainingProgram = trainingProgramRepository.getTrainingProgramById(Long.parseLong(id));
+        trainingPrograms.add(trainingProgram);
+        userRepository.save(currentUser);
+        return "redirect:/";
+    }
+
+    @PostMapping("/subscription_remove/{id}")
+    public String subscriptionRemove(@PathVariable String id, Principal principal) {
+        User currentUser = userRepository.getUserByUsername(principal.getName());
+        Set<TrainingProgram> trainingPrograms = currentUser.getTrainingPrograms();
+        TrainingProgram trainingProgram = trainingProgramRepository.getTrainingProgramById(Long.parseLong(id));
+        trainingPrograms.remove(trainingProgram);
+        userRepository.save(currentUser);
         return "redirect:/";
     }
 

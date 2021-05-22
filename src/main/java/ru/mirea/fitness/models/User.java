@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -177,4 +179,22 @@ public class User {
 
     private String role = "ROLE_USER";
     private boolean enabled = true;
+
+    public Set<TrainingProgram> getTrainingPrograms() {
+        return trainingPrograms;
+    }
+
+    public void setTrainingPrograms(Set<TrainingProgram> trainingPrograms) {
+        this.trainingPrograms = trainingPrograms;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "users_training_programs",
+            joinColumns = {
+                    @JoinColumn(name = "users_user_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "training_programs_id",
+                            nullable = false, updatable = false)})
+    private Set<TrainingProgram> trainingPrograms = new HashSet<>();
 }

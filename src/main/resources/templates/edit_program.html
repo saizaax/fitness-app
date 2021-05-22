@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="page">
+    <section class="page__content page__content_auth">
+      <form th:action="@{${endpoint} + '/' + ${trainingProgram.id}}" th:object="${trainingProgram}" method="post" class="edit-form">
+        <h1 class="auth-form-section-title edit-form-title">Редактирование</h1>
+        <p class="edit-form-subtitle">ID</p>
+        <input
+                class="auth-form-section-input edit-form-input"
+                type="text"
+                placeholder="ID"
+                disabled
+                th:value="${trainingProgram.id}"
+                th:field="*{id}"
+        />
+        <p class="edit-form-subtitle">Обложка</p>
+        <input
+                class="auth-form-section-input edit-form-input"
+                type="text"
+                placeholder="Обложка"
+                th:value="${trainingProgram.thumbnail}"
+                th:field="*{thumbnail}"
+        />
+        <p class="edit-form-subtitle">Название</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Название"
+          th:value="${trainingProgram.title}"
+          th:field="*{title}"
+        />
+        <p class="edit-form-subtitle">Описание</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Описание"
+          height="80"
+          th:value="${trainingProgram.description}"
+          th:field="*{description}"
+        />
+        <p class="edit-form-subtitle">Кол-во часов</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Кол-во часов"
+          th:value="${trainingProgram.hours}"
+          th:field="*{hours}"
+        />
+        <p class="edit-form-subtitle">Кол-во тренировок</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Кол-во тренировок"
+          th:value="${trainingProgram.trainings}"
+          th:field="*{trainings}"
+        />
+        <p class="edit-form-subtitle">Сложность (0 - 10)</p>
+        <input
+          class="auth-form-section-input edit-form-input"
+          type="text"
+          placeholder="Сложность (0 - 10)"
+          th:value="${trainingProgram.complexity}"
+          th:field="*{complexity}"
+        />
+        <div class="edit-form-btn-container">
+          <button class="auth-form-section-button" type="submit">Сохранить</button>
+          <a class="auth-form-section-button edit-form-btn-exit" th:href="@{/}">Назад</a>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
