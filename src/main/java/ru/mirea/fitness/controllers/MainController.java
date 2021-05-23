@@ -58,6 +58,25 @@ public class MainController {
         return "authorization";
     }
 
+    @GetMapping("/payment")
+    public String payment(Model model, Principal principal) {
+        model.addAttribute("title", "Fitness - Subscription Payment");
+        model.addAttribute("user", userRepository.getUserByUsername(principal.getName()));
+        model.addAttribute("dateStart", userRepository.getUserByUsername(principal.getName()).getSubscriptionEnd());
+        return "payment";
+    }
+
+    @PostMapping("/process_payment")
+    public String processPayment(User user, Principal principal) {
+        User currentUser = userRepository.getUserByUsername(principal.getName());
+        currentUser.setSubscriptionEnd(user.getSubscriptionEnd());
+        currentUser.setPrice(user.getPrice());
+        int days = Integer.parseInt(currentUser.getDays()) + Integer.parseInt(user.getDays());
+        currentUser.setDays(Integer.toString(days));
+        userRepository.save(currentUser);
+        return "redirect:/";
+    }
+
     @PostMapping("/edit_user")
     public String editUser(User user) {
         User prev = userRepository.getUserByUsername(user.getUsername());
@@ -89,14 +108,14 @@ public class MainController {
         return "edit_program";
     }
 
-    @PostMapping("/new_program")
+    @PostMapping("/new_program/{id}")
     public String processNewProgram(TrainingProgram trainingProgram) {
         trainingProgramRepository.save(trainingProgram);
         return "redirect:/";
     }
 
     @PostMapping("/edit_program/{id}")
-    public String processProgram(@PathVariable String id, TrainingProgram trainingProgram, Principal principal) {
+    public String processProgram(@PathVariable String id, TrainingProgram trainingProgram) {
         TrainingProgram prev = trainingProgramRepository.getTrainingProgramById(Long.parseLong(id));
         trainingProgram.setId(prev.getId());
         trainingProgramRepository.save(trainingProgram);

@@ -3,9 +3,14 @@ const hours = document.getElementById("profile-hours")
 const avgTime = document.getElementById("profile-avg-time")
 
 const getAvgTime = () => {
-    avgTime.innerHTML = `${Math.round(
-        (parseInt(hours.innerHTML) * 60) / parseInt(visits.innerHTML)
-    )} мин`
+    if (parseInt(hours.innerHTML) > 0 && parseInt(visits.innerHTML) > 0) {
+        avgTime.innerHTML = `${Math.round(
+            (parseInt(hours.innerHTML) * 60) / parseInt(visits.innerHTML)
+        )} мин`
+    }
+    else {
+        avgTime.innerHTML = `0 мин`
+    }
 }
 getAvgTime()
 
@@ -14,8 +19,7 @@ const subscriptionEnd = document.getElementById("profile-subscription-end")
 const subscriptionDays = document.getElementById("profile-subscription-days")
 
 const getSubscriptionDays = () => {
-    const start = subscriptionStart.innerHTML.split(".")
-    const startDate = new Date(+start[2], start[1] - 1, +start[0])
+    const startDate = new Date()
 
     const end = subscriptionEnd.innerHTML.split(".")
     const endDate = new Date(+end[2], end[1] - 1, +end[0])
@@ -23,9 +27,21 @@ const getSubscriptionDays = () => {
     const days = Math.ceil(
         (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
     )
-    subscriptionDays.innerHTML = `${days} дней`
+    subscriptionDays.innerHTML = days < 0 ? `0 дней` : `${days} дней`
 }
 getSubscriptionDays()
+
+const getSubscriptionPlan = () => {
+    const plan = document.getElementById("profile-plan");
+
+    if (subscriptionDays.innerHTML === "0 дней") {
+        plan.innerHTML = "FREE"
+    }
+    else {
+        if (plan.innerHTML === "...") plan.innerHTML = "PRO"
+    }
+}
+getSubscriptionPlan()
 
 const getComplexityScale = () => {
     const elements = Array.from(

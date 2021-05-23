@@ -1,4 +1,7 @@
 const daysInput = document.getElementById("payment-days-input")
+const daysStartInput = document.getElementById("payment-days-start-input")
+const daysEndInput = document.getElementById("payment-days-end-input")
+
 const cardNumberInput = document.getElementById("payment-card-number-input")
 const cardCvcInput = document.getElementById("payment-card-cvc-input")
 const cardDateInput = document.getElementById("payment-card-date-input")
@@ -22,13 +25,14 @@ const calculatePrice = () => {
     const { value } = daysInput
 
     if (parseInt(value) > 0) {
-        const start = priceOutput.getAttribute("data-subscription-start").split(".")
+        const start = daysStartInput.value.split(".")
         const subDate = new Date(+start[2], start[1] - 1, +start[0])
         subDate.setDate(subDate.getDate() + parseInt(value));
-        priceOutput.setAttribute("data-subscription-end", subDate.toLocaleDateString())
-        priceOutput.innerHTML = `${parseInt(value) * 99} руб`
+        daysEndInput.value = subDate.toLocaleDateString()
+        priceOutput.value = `${parseInt(value) * 99} руб`
     }
 }
+calculatePrice()
 
 daysInput.addEventListener("change", validateData)
 daysInput.addEventListener("change", calculatePrice)

@@ -45,7 +45,7 @@ input {
   &_shadow {
     z-index: -1;
     width: 85%;
-    height: 780px;
+    height: 860px;
     position: absolute;
     left: 50%;
     top: 25px;
@@ -265,7 +265,7 @@ input {
 
     &-programs {
       overflow: auto;
-      max-height: 775px;
+      max-height: 790px;
       box-shadow: none;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -286,6 +286,19 @@ input {
 
       & > .program-container {
         width: 450px;
+      
+        @media screen and (max-width: 1587px) {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 1587px) {
+        margin-top: 20px;
+        max-width: 100%;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
     }
 
@@ -369,6 +382,11 @@ input {
 
       &-result {
         color: #B7FF7E;
+        width: fit-content;
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
       }
     }
   }
@@ -402,7 +420,7 @@ input {
     padding: 35px;
     position: relative;
     border-radius: 20px;
-    height: 680px;
+    height: 720px;
     width: 530px;
     display: flex;
     background: linear-gradient(200.9deg, #13141e 0%, #1c1e2b 100%);

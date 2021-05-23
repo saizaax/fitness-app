@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page">
+<section class="page__content page__content_auth">
+    <form th:action="@{/process_payment}" th:object="${user}" method="post" class="edit-form edit-form_payment">
+        <h1 class="auth-form-section-title edit-form-title">Продление подписки</h1>
+        <p class="edit-form-subtitle">Данные карты</p>
+        <div class="edit-form_payment__card-container">
+            <p class="edit-form_payment__card-info">Номер</p>
+            <input class="edit-form_payment__card-input" placeholder="1234 5678 1234 5678" id="payment-card-number-input" />
+            <div class="edit-form_payment__card-input-container">
+                <div class="edit-form_payment__card-input-item">
+                    <p class="edit-form_payment__card-info">CVC</p>
+                    <input class="edit-form_payment__card-input edit-form_payment__card-input_cvc" placeholder="123" id="payment-card-cvc-input" />
+                </div>
+                <div class="edit-form_payment__card-input-item">
+                    <p class="edit-form_payment__card-info">ММ / ГГ</p>
+                    <input class="edit-form_payment__card-input edit-form_payment__card-input_date" placeholder="01 / 23" id="payment-card-date-input" />
+                </div>
+            </div>
+        </div>
+        <p class="edit-form-subtitle">Кол-во дней</p>
+        <input
+                class="auth-form-section-input edit-form-input"
+                type="text"
+                placeholder="Кол-во дней"
+                th:value="${user.days}"
+                th:field="*{days}"
+                id="payment-days-input"
+        />
+        <p class="edit-form-subtitle">Начало</p>
+        <input
+                class="auth-form-section-input edit-form-input"
+                type="text"
+                placeholder="Начало"
+                id="payment-days-start-input"
+                th:value="${dateStart}"
+                readonly="readonly"
+        />
+        <p class="edit-form-subtitle">Конец</p>
+        <input
+                class="auth-form-section-input edit-form-input"
+                type="text"
+                placeholder="Конец"
+                id="payment-days-end-input"
+                th:value="${user.subscriptionEnd}"
+                th:field="*{subscriptionEnd}"
+                readonly="readonly"
+        />
+        <h3 class="edit-form_payment__price">Сумма к оплате: <input class="edit-form_payment__price-result" id="payment-price" th:value="${user.price}" th:field="*{price}" readonly="readonly" /></h3>
+        <div class="edit-form-btn-container">
+            <button type="submit" class="auth-form-section-button" id="payment-btn">Оплатить</button>
+            <a th:href="@{/}" class="auth-form-section-button edit-form-btn-exit">Назад</a>
+        </div>
+    </form>
+</section>
+<script src="js/payment.js"></script>
+</body>
+</html>

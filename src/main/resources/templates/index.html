@@ -58,11 +58,11 @@
         <p class="profile-section">Данные о тарифе</p>
         <div class="profile-data">
           <p class="profile-data-item">План</p>
-          <p class="profile-data-value" th:text="${user.plan}"></p>
+          <p class="profile-data-value" th:text="${user.plan}" id="profile-plan"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Стоимость</p>
-          <p class="profile-data-value" th:text="${user.price} + ' руб'"></p>
+          <p class="profile-data-value" th:text="${user.price}"></p>
         </div>
         <div class="profile-data">
           <p class="profile-data-item">Время</p>

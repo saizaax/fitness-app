@@ -249,11 +249,9 @@
                     </div>
                     <div class="program-media">
                         <div class="program-image" th:style="'background: center / cover url(' + ${el.thumbnail} + ');'"></div>
-                        <a th:href="@{'/edit_program/' + ${el.id}}">
-                            <button class="program-action-btn">
-                                Изменить
-                            </button>
-                        </a>
+                        <div class="program-action-btn">
+                            <a th:href="@{'/edit_program/' + ${el.id}}" style="color: #b7ff7e;">Изменить</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -160,6 +162,12 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
+    public String getTodayDate() {
+        String pattern = "dd.MM.yyyy";
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        return format.format(new Date());
+    }
+
     private String username;
     private String password;
 
@@ -174,8 +182,8 @@ public class User {
     private String plan = "...";
     private String price = "0";
     private String days = "0";
-    private String subscriptionStart = "...";
-    private String subscriptionEnd = "...";
+    private String subscriptionStart = getTodayDate();
+    private String subscriptionEnd = getTodayDate();
 
     private String role = "ROLE_USER";
     private boolean enabled = true;

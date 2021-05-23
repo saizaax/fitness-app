@@ -75,7 +75,7 @@ input {
 .profile-container_shadow {
   z-index: -1;
   width: 85%;
-  height: 780px;
+  height: 860px;
   position: absolute;
   left: 50%;
   top: 25px;
@@ -307,7 +307,7 @@ input {
 
 .catalog-programs_admin-programs {
   overflow: auto;
-  max-height: 775px;
+  max-height: 790px;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-box-orient: vertical;
@@ -334,6 +334,27 @@ input {
 
 .catalog-programs_admin-programs > .program-container {
   width: 450px;
+}
+
+@media screen and (max-width: 1587px) {
+  .catalog-programs_admin-programs > .program-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1587px) {
+  .catalog-programs_admin-programs {
+    margin-top: 20px;
+    max-width: 100%;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 @media screen and (max-width: 1587px) {
@@ -442,6 +463,13 @@ input {
 
 .edit-form_payment__price-result {
   color: #B7FF7E;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .edit-form-items {
@@ -479,7 +507,7 @@ input {
   padding: 35px;
   position: relative;
   border-radius: 20px;
-  height: 680px;
+  height: 720px;
   width: 530px;
   display: -webkit-box;
   display: -ms-flexbox;
