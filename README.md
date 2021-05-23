@@ -1,4 +1,4 @@
-![](https://i.imgur.com/H4pCCVp.png)
+![](https://i.imgur.com/vPz0ag5.png)
 # 💪 Fitness Centre Dashboard - Course Work
 ### ⚡ Goal: to create Java Spring MVC Fitness Centre Application
 
