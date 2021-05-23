@@ -34,7 +34,7 @@
 #### 🔥 Design:
 [Link to design template in «Figma» App](https://www.figma.com/file/EeJuD0RUuwKfsfElUVMfbQ/Fitness)
 
-![](https://i.imgur.com/lNiUxuL.png)
+![](https://i.imgur.com/PRtgv8G.png)
 <br><br>
 
 #### ✅ Completed Tasks:
