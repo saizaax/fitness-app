@@ -9,15 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import ru.mirea.fitness.models.TrainingProgram;
 import ru.mirea.fitness.models.User;
 import ru.mirea.fitness.repo.TrainingProgramRepository;
 import ru.mirea.fitness.repo.UserRepository;
 
 import java.security.Principal;
-import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Controller
