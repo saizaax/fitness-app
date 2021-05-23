@@ -79,15 +79,11 @@ public class MainController {
 
     @PostMapping("/edit_user")
     public String editUser(User user) {
-        User prev = userRepository.getUserByUsername(user.getUsername());
-
         if (user.getPassword().length() != 60) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String encodedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encodedPassword);
         }
-
-        user.setId(prev.getId());
         userRepository.save(user);
         return "redirect:/";
     }
