@@ -16,7 +16,10 @@
 3. Build and run docker containers (Spring + MySQL DB) with docker-compose<br>
 `docker-compose up`<br><br>
 4. Wait for containers to start and open localhost app in web-browser at port 8080<br>
-`http://localhost:8080`
+`http://localhost:8080`<br><br>
+5. Login with one of the following credentials<br>
+*Admin*: login `admin` password `admin`<br>
+*User*: login `user` password `user`
 
 <br>
 
